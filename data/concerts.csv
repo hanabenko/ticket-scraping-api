@@ -1,0 +1,4 @@
+artist_name,venue,city,country,event_date,source,url
+The Echoes,The Forum,Los Angeles,USA,2025-10-20,Ticketmaster,https://tickets.example.com/echoes-la
+Neon Waves,Webster Hall,New York,USA,2025-10-22,AXS,https://tickets.example.com/neon-nyc
+The Echoes,Fillmore,San Francisco,USA,2025-11-01,Ticketmaster,https://tickets.example.com/echoes-sf

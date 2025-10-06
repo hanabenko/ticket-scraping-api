@@ -1,0 +1,4 @@
+[
+  {"artist": "The Echoes", "email": "alice@example.com", "type": "click", "occurred_at": "2025-10-01T10:05:00Z", "channel": "ticketing", "offer_id": "E1"},
+  {"artist": "The Echoes", "email": "alice@example.com", "type": "ticket_purchase", "occurred_at": "2025-10-01T10:10:00Z", "channel": "ticketing", "order_total": 120.0}
+]

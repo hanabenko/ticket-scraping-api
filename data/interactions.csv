@@ -1,0 +1,9 @@
+artist_name,email,interaction_type,channel,occurred_at
+The Echoes,alice@example.com,view,concerts,2025-10-01T10:00:00Z
+The Echoes,alice@example.com,click,concerts,2025-10-01T10:05:00Z
+The Echoes,alice@example.com,ticket_purchase,ticketing,2025-10-01T10:10:00Z
+Neon Waves,bob@example.com,view,social,2025-10-02T12:00:00Z
+Neon Waves,bob@example.com,click,concerts,2025-10-02T12:03:00Z
+Neon Waves,bob@example.com,stream,streaming,2025-10-02T13:00:00Z
+The Echoes,carol@example.com,view,social,2025-10-03T09:00:00Z
+The Echoes,carol@example.com,merch_purchase,merch,2025-10-03T09:30:00Z
