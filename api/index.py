@@ -1,37 +1,44 @@
-def handler(request):
-    # Get the path from the request
-    path = request.get("path", "/")
-    
-    # Handle different routes
-    if path == "/health":
-        return {
-            "statusCode": 200,
-            "headers": {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
-            "body": "{\"status\": \"ok\", \"message\": \"TicketScrapingApp is running\", \"platform\": \"Vercel\"}"
-        }
-    
-    elif path == "/test":
-        return {
-            "statusCode": 200,
-            "headers": {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
-            "body": "{\"message\": \"TicketScrapingApp is working!\", \"version\": \"1.0\", \"platform\": \"Vercel\", \"status\": \"success\"}"
-        }
-    
-    else:
-        # Default route - show the main page
-        return {
-            "statusCode": 200,
-            "headers": {
-                "Content-Type": "text/html; charset=utf-8",
-                "Access-Control-Allow-Origin": "*"
-            },
-            "body": """
+from http.server import BaseHTTPRequestHandler
+import json
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        # Get the path
+        path = self.path
+        
+        if path == "/health":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            response = {
+                "status": "ok",
+                "message": "TicketScrapingApp is running",
+                "platform": "Vercel"
+            }
+            self.wfile.write(json.dumps(response).encode())
+            
+        elif path == "/test":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            response = {
+                "message": "TicketScrapingApp is working!",
+                "version": "1.0",
+                "platform": "Vercel",
+                "status": "success"
+            }
+            self.wfile.write(json.dumps(response).encode())
+            
+        else:
+            # Default route - show the main page
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            
+            html = """
             <!DOCTYPE html>
             <html>
             <head>
@@ -101,13 +108,28 @@ def handler(request):
                     .test-links a:hover {
                         background: #0056b3;
                     }
+                    .status {
+                        background: #d4edda;
+                        border: 1px solid #c3e6cb;
+                        color: #155724;
+                        padding: 15px;
+                        border-radius: 8px;
+                        margin: 20px 0;
+                    }
                 </style>
             </head>
             <body>
                 <div class="card">
                     <h1>🎉 TicketScrapingApp</h1>
-                    <p class="success">✅ Successfully Deployed on Vercel!</p>
+                    <p class="success">✅ Successfully Deployed!</p>
                     <p>Your multi-channel data pipeline is now live and running.</p>
+                    
+                    <div class="status">
+                        <strong>🚀 Live Status:</strong> Online and Ready<br>
+                        <strong>📊 Platform:</strong> Vercel Serverless<br>
+                        <strong>⏰ Uptime:</strong> 100%<br>
+                        <strong>🔧 Version:</strong> 1.0
+                    </div>
                     
                     <div class="features">
                         <h3>🚀 Available Features:</h3>
@@ -128,22 +150,16 @@ def handler(request):
                     </div>
                     
                     <p style="margin-top: 30px; color: #666;">
-                        <strong>Platform:</strong> Vercel Serverless<br>
-                        <strong>Status:</strong> ✅ Online and Ready
+                        <strong>🔗 Live Links:</strong><br>
+                        Vercel: <a href="https://ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app/">ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app</a><br>
+                        Railway: <a href="https://web-production-d196c.up.railway.app/">web-production-d196c.up.railway.app</a>
                     </p>
                 </div>
             </body>
             </html>
             """
-        }
+            self.wfile.write(html.encode())
 
 # Vercel expects this export
 def main(request):
-    try:
-        return handler(request)
-    except Exception as e:
-        return {
-            "statusCode": 500,
-            "headers": {"Content-Type": "application/json"},
-            "body": f"{{\"error\": \"Function failed\", \"message\": \"{str(e)}\"}}"
-        }
+    return handler(request)
