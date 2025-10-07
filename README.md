@@ -2,7 +2,7 @@
 
 A multi-channel data pipeline for concert/ticketing data that scrapes and ingests data from multiple sources, attributes users to artists, and calculates conversion funnels.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.11+
@@ -18,7 +18,7 @@ A multi-channel data pipeline for concert/ticketing data that scrapes and ingest
 
 2. **Create virtual environment**
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
@@ -30,13 +30,13 @@ A multi-channel data pipeline for concert/ticketing data that scrapes and ingest
 4. **Run the application**
    ```bash
    # For Vercel-style deployment (serverless function)
-   python api/index.py
+   python3 api/index.py
    
    # Or run with a simple HTTP server
-   python -m http.server 8000
+   python3 -m http.server 8000
    ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── api/
@@ -47,7 +47,7 @@ A multi-channel data pipeline for concert/ticketing data that scrapes and ingest
 └── .gitignore           # Git ignore rules
 ```
 
-## 🔧 Development
+## Development
 
 ### Local Testing
 
@@ -70,49 +70,24 @@ curl http://localhost:8000/health
 curl http://localhost:8000/test
 ```
 
-## 🚀 Deployment
+## Features
 
-### Vercel Deployment
+- **Multi-channel data pipeline**
+- **CSV upload endpoints**
+- **SeatGeek scraper**
+- **URL-based scraper**
+- **Attribution & conversion metrics**
+- **Beautiful dashboard UI**
+- **Health monitoring**
+- **Cross-platform deployment**
 
-1. **Connect to Vercel**
-   ```bash
-   npm i -g vercel
-   vercel login
-   vercel
-   ```
-
-2. **Automatic deployment**
-   - Push to `main` branch
-   - Vercel automatically deploys
-   - Live URL: https://ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app/
-
-### Railway Deployment
-
-1. **Connect to Railway**
-   - Go to [Railway.app](https://railway.app)
-   - Connect GitHub repository
-   - Deploy automatically
-
-2. **Live URL**: https://web-production-d196c.up.railway.app/
-
-## 🎯 Features
-
-- ✅ **Multi-channel data pipeline**
-- ✅ **CSV upload endpoints**
-- ✅ **SeatGeek scraper**
-- ✅ **URL-based scraper**
-- ✅ **Attribution & conversion metrics**
-- ✅ **Beautiful dashboard UI**
-- ✅ **Health monitoring**
-- ✅ **Cross-platform deployment**
-
-## 🔗 Live Links
+## Live Links (currently not working)
 
 - **Vercel**: https://ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app/
 - **Railway**: https://web-production-d196c.up.railway.app/
 - **GitHub**: https://github.com/hanabenko/ticket-scraping-api
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -148,7 +123,7 @@ print(\"Result:\", result)
 "
 ```
 
-## 📊 API Endpoints
+## 📊📊  API Endpoints 📊📊 
 
 ### GET /
 Returns the main dashboard HTML page.
@@ -174,7 +149,7 @@ Returns JSON test response:
 }
 ```
 
-## 🤝 Contributing
+## If you'd like to contribute...
 
 1. Fork the repository
 2. Create a feature branch
@@ -182,18 +157,16 @@ Returns JSON test response:
 4. Test locally
 5. Submit a pull request
 
-## 📝 License
+## License
 
 This project is open source and available under the MIT License.
 
-## 🆘 Support
+## Support
 
 If you encounter any issues:
 1. Check the troubleshooting section
 2. Review deployment logs
 3. Open an issue on GitHub
-4. Contact: [Your Contact Info]
+4. Contact: hanabenko
 
 ---
-
-**Happy coding! 🎉**
