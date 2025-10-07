@@ -12,7 +12,7 @@
       "dest": "/api/index.py"
     },
     {
-      "src": "/test",
+      "src": "/test", 
       "dest": "/api/index.py"
     },
     {
