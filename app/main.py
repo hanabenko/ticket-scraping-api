@@ -15,6 +15,10 @@ templates = Jinja2Templates(directory="templates")
 async def health():
     return {"status": "ok"}
 
+@app.get("/test")
+async def test():
+    return {"message": "TicketScrapingApp is working!", "version": "1.0"}
+
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
