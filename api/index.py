@@ -40,120 +40,122 @@ class handler(BaseHTTPRequestHandler):
             
             html = """
             <!DOCTYPE html>
-            <html>
+            <html lang="en">
             <head>
-                <title>TicketScrapingApp</title>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Ticket Scraping API</title>
                 <style>
-                    body { 
-                        font-family: Arial, sans-serif; 
+                    * {
                         margin: 0;
-                        padding: 20px;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    
+                    body {
+                        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                        background: #1a1a1a;
+                        color: white;
                         min-height: 100vh;
                         display: flex;
-                        align-items: center;
+                        flex-direction: column;
                         justify-content: center;
+                        align-items: center;
+                        padding: 20px;
                     }
-                    .card { 
-                        background: white; 
-                        padding: 40px; 
-                        border-radius: 15px; 
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                        max-width: 600px;
+                    
+                    .container {
                         text-align: center;
+                        max-width: 600px;
+                        width: 100%;
                     }
-                    h1 { 
-                        color: #333; 
+                    
+                    h1 {
+                        font-size: 3rem;
                         margin-bottom: 20px;
-                        font-size: 2.5em;
+                        background: linear-gradient(45deg, #667eea, #764ba2);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
                     }
-                    .success { 
-                        color: #28a745; 
-                        font-weight: bold;
-                        font-size: 1.2em;
-                        margin: 20px 0;
+                    
+                    .subtitle {
+                        font-size: 1.2rem;
+                        opacity: 0.8;
+                        margin-bottom: 40px;
                     }
-                    .features {
-                        text-align: left;
-                        margin: 30px 0;
-                    }
-                    .feature {
-                        background: #f8f9fa;
-                        padding: 15px;
-                        margin: 10px 0;
-                        border-radius: 8px;
-                        border-left: 4px solid #007bff;
-                    }
-                    .endpoint {
-                        background: #e9ecef;
-                        padding: 10px;
-                        border-radius: 5px;
-                        font-family: monospace;
-                        margin: 5px 0;
-                    }
-                    .test-links {
-                        margin: 20px 0;
-                    }
-                    .test-links a {
+                    
+                    .main-link {
                         display: inline-block;
-                        margin: 10px;
-                        padding: 10px 20px;
-                        background: #007bff;
+                        background: linear-gradient(45deg, #667eea, #764ba2);
                         color: white;
+                        padding: 15px 30px;
                         text-decoration: none;
-                        border-radius: 5px;
-                    }
-                    .test-links a:hover {
-                        background: #0056b3;
-                    }
-                    .status {
-                        background: #d4edda;
-                        border: 1px solid #c3e6cb;
-                        color: #155724;
-                        padding: 15px;
                         border-radius: 8px;
-                        margin: 20px 0;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        margin-bottom: 60px;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    
+                    .main-link:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+                    }
+                    
+                    .bottom-buttons {
+                        display: flex;
+                        gap: 20px;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                    }
+                    
+                    .btn {
+                        background: rgba(255, 255, 255, 0.1);
+                        color: white;
+                        padding: 12px 24px;
+                        text-decoration: none;
+                        border-radius: 6px;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        transition: all 0.3s ease;
+                        font-size: 0.9rem;
+                    }
+                    
+                    .btn:hover {
+                        background: rgba(255, 255, 255, 0.2);
+                        transform: translateY(-1px);
+                    }
+                    
+                    .btn.health {
+                        border-color: #4caf50;
+                        color: #4caf50;
+                    }
+                    
+                    .btn.health:hover {
+                        background: rgba(76, 175, 80, 0.1);
+                    }
+                    
+                    .btn.artists {
+                        border-color: #ffd700;
+                        color: #ffd700;
+                    }
+                    
+                    .btn.artists:hover {
+                        background: rgba(255, 215, 0, 0.1);
                     }
                 </style>
             </head>
             <body>
-                <div class="card">
-                    <h1>🎉 TicketScrapingApp</h1>
-                    <p class="success">✅ Successfully Deployed!</p>
-                    <p>Your multi-channel data pipeline is now live and running.</p>
+                <div class="container">
+                    <h1>🎵 Ticket Scraping API</h1>
+                    <p class="subtitle">Concert Attribution & Analytics Pipeline</p>
                     
-                    <div class="status">
-                        <strong>🚀 Live Status:</strong> Online and Ready<br>
-                        <strong>📊 Platform:</strong> Vercel Serverless<br>
-                        <strong>⏰ Uptime:</strong> 100%<br>
-                        <strong>🔧 Version:</strong> 1.0
+                    <a href="/docs" class="main-link">Try It Out</a>
+                    
+                    <div class="bottom-buttons">
+                        <a href="/health" class="btn health">Health Check</a>
+                        <a href="/test" class="btn artists">Test API</a>
                     </div>
-                    
-                    <div class="features">
-                        <h3>🚀 Available Features:</h3>
-                        <div class="feature">📊 Multi-channel data pipeline</div>
-                        <div class="feature">📁 CSV upload endpoints</div>
-                        <div class="feature">🎫 SeatGeek scraper</div>
-                        <div class="feature">🔗 URL-based scraper</div>
-                        <div class="feature">📈 Attribution & conversion metrics</div>
-                    </div>
-                    
-                    <h3>🔗 Test Endpoints:</h3>
-                    <div class="endpoint">GET /health - Health check</div>
-                    <div class="endpoint">GET /test - Test endpoint</div>
-                    
-                    <div class="test-links">
-                        <a href="/health">Test Health</a>
-                        <a href="/test">Test API</a>
-                    </div>
-                    
-                    <p style="margin-top: 30px; color: #666;">
-                        <strong>🔗 Live Links:</strong><br>
-                        Vercel: <a href="https://ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app/">ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app</a><br>
-                        Railway: <a href="https://web-production-d196c.up.railway.app/">web-production-d196c.up.railway.app</a>
-                    </p>
                 </div>
             </body>
             </html>
