@@ -81,6 +81,44 @@ Connect GitHub repository at [Railway.app](https://railway.app)
 - CSV upload endpoints
 - Attribution & conversion metrics
 
+## 📊 API Endpoints
+
+### Core Endpoints
+
+- **GET `/`** - Main dashboard HTML page
+- **GET `/health`** - Health check
+- **GET `/test`** - API test endpoint
+
+### Scraping Endpoints
+
+- **GET `/scrape/seatgeek`** - Fetch events from SeatGeek API
+  - Query: `query`, `per_page`, `page`, `client_id` (optional)
+  - Uses `SEATGEEK_CLIENT_ID` env var if `client_id` omitted
+- **GET `/scrape/url`** - Extract JSON-LD events from single URL
+  - Query: `url`
+- **POST `/scrape/urls`** - Batch scrape multiple URLs
+  - Body: `{"urls": ["https://...", "..."]}`
+- **GET `/scrape/discover`** - Crawl same-domain links for events
+  - Query: `url` (seed), `max_pages` (default: 10)
+
+### Example Usage
+
+```bash
+# SeatGeek events
+curl "http://localhost:8000/scrape/seatgeek?query=taylor+swift"
+
+# Single page scraping
+curl "http://localhost:8000/scrape/url?url=https://example.com/event"
+
+# Batch scraping
+curl -X POST "http://localhost:8000/scrape/urls" \
+  -H "Content-Type: application/json" \
+  -d '{"urls": ["https://venue1.com", "https://venue2.com"]}'
+
+# Discovery crawling
+curl "http://localhost:8000/scrape/discover?url=https://venue.com&max_pages=5"
+```
+
 ## 🕷️ Data Sources (Planned)
 
 1. **SeatGeek API** - Concert events, venues, performers
