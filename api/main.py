@@ -36,6 +36,6 @@ async def read_root():
 async def health():
     return {"status": "ok", "message": "TicketScrapingApp is running"}
 
-# Vercel handler
+# Vercel handler - this is what Vercel calls
 def handler(request):
     return app
