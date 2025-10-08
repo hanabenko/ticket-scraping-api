@@ -1,10 +1,15 @@
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from .api import router
-from .db import Base, engine
-from .settings import settings
+import sys
 import os
+
+# Add the app directory to the path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from app.api import router
+from app.db import Base, engine
+from app.settings import settings
 
 # Create FastAPI app
 app = FastAPI(
@@ -34,7 +39,3 @@ async def health():
 # Vercel handler
 def handler(request):
     return app
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
