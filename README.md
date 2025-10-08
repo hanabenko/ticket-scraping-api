@@ -17,7 +17,12 @@ cd ticket-scraping-api
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python api/index.py
+
+# Start the FastAPI server
+uvicorn app.main:app --reload
+
+# Visit http://localhost:8000 for the dashboard
+# Visit http://localhost:8000/docs for API documentation
 ```
 
 ## 📁 Project Structure
@@ -49,20 +54,44 @@ python api/index.py
 
 ## 🚀 Deployment
 
-### Vercel
+### Local Development
 
+The application runs locally with full functionality:
+
+```bash
+# Start the FastAPI server
+uvicorn app.main:app --reload
+
+# Visit the dashboard
+open http://localhost:8000
+
+# Access API documentation
+open http://localhost:8000/docs
+```
+
+### Cloud Deployment
+
+**⚠️ Note**: Cloud deployments (Vercel/Railway) are currently being configured and will be available soon.
+
+#### Vercel (In Progress)
 ```bash
 npm i -g vercel
 vercel login
 vercel
 ```
+**Status**: Configuration in progress - will be live soon
 
-**Live URL**: https://ticket-scraping-6i8g3o6de-hana-benkos-projects.vercel.app/
-
-### Railway
-
+#### Railway (In Progress)
 Connect GitHub repository at [Railway.app](https://railway.app)
-**Live URL**: https://web-production-d196c.up.railway.app/
+**Status**: Configuration in progress - will be live soon
+
+### Current Working Features
+
+✅ **Local Development**: Full FastAPI app with all endpoints
+✅ **API Documentation**: Interactive Swagger UI at `/docs`
+✅ **Data Pipeline**: Complete schema, attribution, and metrics
+✅ **Scraping**: SeatGeek API, URL scraping, CSV uploads
+✅ **Dashboard**: Dark theme landing page with insights
 
 ## 🎯 Features
 
